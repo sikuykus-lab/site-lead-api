@@ -1,0 +1,13 @@
+[Unit]
+Description=Site lead API → Telegram
+After=network.target
+
+[Service]
+Type=simple
+Environment=CRM_ENV_PATH=/opt/telegram-crm-bot/.env
+Environment=SITE_LEAD_LISTEN=127.0.0.1:8791
+ExecStart=/usr/bin/python3 /opt/site-lead-api/site_lead_server.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
